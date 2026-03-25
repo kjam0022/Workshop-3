@@ -1,0 +1,108 @@
+---
+title: "workshop2"
+author: "Krrish"
+format: 
+  html :
+    theme: "cerulean"
+  pdf:
+     toc: true
+editor: visual
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE
+  )
+```
+
+```{r}
+library(rmarkdown)
+library(knitr)
+library(tidyverse)
+library(readr)
+library(kableExtra)
+library(ggplot2)
+
+
+```
+
+```{r}
+getwd()
+dat <- read_csv("avian_influenza_numbers.csv")
+
+```
+
+```{r}
+head(dat)
+```
+
+```{r}
+dat %>%
+  head(10)
+```
+
+```{r}
+glimpse(dat)
+
+?glimpse()
+```
+
+```{r}
+str(dat)
+```
+
+```{r}
+dim(dat)
+
+```
+
+`` `r nrow(dat)` ``
+
+`` `r ncol(dat)` ``
+
+`###`Why is it important to know the dimension of your dataset?
+
+-   Is my data complete or did some rows fail to load?
+
+-   Do I have enough data to draw conclusions? (10 rows vs 10 million rows is very different)
+
+-   After filtering, did I accidentally delete too many rows?
+
+`###`What are the variable names in the dataset? \
+use name function to print all the coloum names\
+\[1\] "Range" "Month" "Vietnam" "Turkey" "Thailand" "Iraq"\
+\[7\] "Indonesia" "Egypt" "Djibouti" "China" "Cambodia" "Nigeria"\
+\[13\] "Azerbaijan" "Pakistan" "Myanmar" "Laos" "Bangladesh" "Canada"\
+\[19\] "India" "Nepal" "United Kingdom" "Spain" "United States" "Ecuador"\
+\[25\] "Chile" "Australia"\
+\>
+
+`Australia : The number of influenza count`
+
+#Ex 4
+
+```{r}
+library(lubridate)
+data_cleaned <- dat |>
+  select(Month,Australia, Egypt,`United States`) |>
+  mutate(Month = mdy(Month) |>
+  filter(!is.na(Month))
+           
+           
+
+```
+
+```{r}
+library(kableExtra)
+summarise()
+```
+
+\
+
+# Introduction
+
+In this tutorial we are looking at the Avian Influenza cases detected globally since 1997.
+
+[US CDC](https://www.cdc.gov/bird-flu/php/avian-flu-summary/chart-epi-curve-ah5n1.html)
